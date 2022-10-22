@@ -4,8 +4,10 @@ const bcrypt = require('bcryptjs');
 const psicologoController = {
     listarTodos: async (request, response) => {
         try {
+            console.log('primeira etapa')
             //Salvar todos encontrados na variavel
             const psicologos = await Psicologos.findAll();
+            console.log('segunda etapa')
             //retorna em formato de JSON a variavel com todos os psicólogos
             response.status(200).json(psicologos);
         } catch (error) {

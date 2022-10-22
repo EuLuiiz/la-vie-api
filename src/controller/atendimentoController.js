@@ -34,14 +34,14 @@ const atendimentoController = {
         }
     },
     criarAtendimento: async (request, response) => {
-        const { paciente_id, data_atendimento, observacao } = request.body;
-        const psicologoUsuario = request.auth;
+        const {id} = request.auth;
         try {
+            const { paciente_id, data_atendimento, observacao } = request.body;
             const novoAtendimento = await Atendimentos.create({
                 id_do_paciente: paciente_id,
-                id_do_psicologo: psicologoUsuario.id,
-                data_atendimento,
-                observacao
+                id_do_psicologo: id,
+                data_atendimento: data_atendimento,
+                observacao: observacao
             });
             response.status(201).json(novoAtendimento);
         } catch (error) {
